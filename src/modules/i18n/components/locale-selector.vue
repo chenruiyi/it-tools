@@ -1,24 +1,15 @@
 <script setup lang="ts">
-const { availableLocales, locale } = useI18n();
+const { locale } = useI18n();
 
-const localesLong: Record<string, string> = {
-  en: 'English',
-  zh: '中文',
-};
+function toggle() {
+  locale.value = locale.value === 'en' ? 'zh' : 'en';
+}
 
-const localeOptions = computed(() =>
-  availableLocales.map(locale => ({
-    label: localesLong[locale] ?? locale,
-    value: locale,
-  })),
-);
+const label = computed(() => locale.value === 'zh' ? 'EN' : '中文');
 </script>
 
 <template>
-  <c-select
-    v-model:value="locale"
-    :options="localeOptions"
-    placeholder="Select a language"
-    w-100px
-  />
+  <c-button variant="text" size="small" round @click="toggle">
+    {{ label }}
+  </c-button>
 </template>

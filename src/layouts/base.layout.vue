@@ -80,10 +80,6 @@ const tools = computed<ToolCategory[]>(() => [
             <IconHome :size="22" />
           </c-button>
 
-          <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
-            <icon-mdi:brush-variant text-20px />
-          </c-button>
-
           <command-palette />
         </div>
 

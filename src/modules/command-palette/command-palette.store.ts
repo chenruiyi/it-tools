@@ -17,60 +17,62 @@ export const useCommandPaletteStore = defineStore('command-palette', () => {
   const router = useRouter();
   const searchPrompt = ref('');
 
-  const toolsOptions = toolStore.tools.map(tool => ({
-    ...tool,
-    to: tool.path,
-    toolCategory: tool.category,
-    category: 'Tools',
-  }));
-
-  const searchOptions: PaletteOption[] = [
-    ...toolsOptions,
-    {
-      name: 'Random tool',
-      description: 'Get a random tool from the list.',
-      action: () => {
-        const { path } = _.sample(toolStore.tools)!;
-        router.push(path);
-      },
-      icon: DiceIcon,
+  const searchOptions = computed<PaletteOption[]>(() => {
+    const toolsOptions = toolStore.tools.map(tool => ({
+      ...tool,
+      to: tool.path,
+      toolCategory: tool.category,
       category: 'Tools',
-      keywords: ['random', 'tool', 'pick', 'choose', 'select'],
-      closeOnSelect: true,
-    },
-    {
-      name: 'Toggle dark mode',
-      description: 'Toggle dark mode on or off.',
-      action: () => styleStore.toggleDark(),
-      icon: SunIcon,
-      category: 'Actions',
-      keywords: ['dark', 'theme', 'toggle', 'mode', 'light', 'system'],
-    },
-    {
-      name: 'Github repository',
-      href: 'https://github.com/chenruiyi/it-tools',
-      category: 'External',
-      description: 'View the source code of it-tools on Github.',
-      keywords: ['github', 'repo', 'repository', 'source', 'code'],
-      icon: GithubIcon,
-    },
-    {
-      name: 'Report a bug or an issue',
-      description: 'Report a bug or an issue to help improve it-tools.',
-      href: 'https://github.com/chenruiyi/it-tools/issues/new/choose',
-      category: 'Actions',
-      keywords: ['report', 'issue', 'bug', 'problem', 'error'],
-      icon: BugIcon,
-    },
-    {
-      name: 'About',
-      description: 'Learn more about IT-Tools.',
-      to: '/about',
-      category: 'Pages',
-      keywords: ['about', 'learn', 'more', 'info', 'information'],
-      icon: InfoIcon,
-    },
-  ];
+    }));
+
+    return [
+      ...toolsOptions,
+      {
+        name: 'Random tool',
+        description: 'Get a random tool from the list.',
+        action: () => {
+          const { path } = _.sample(toolStore.tools)!;
+          router.push(path);
+        },
+        icon: DiceIcon,
+        category: 'Tools',
+        keywords: ['random', 'tool', 'pick', 'choose', 'select', '随机'],
+        closeOnSelect: true,
+      },
+      {
+        name: 'Toggle dark mode',
+        description: 'Toggle dark mode on or off.',
+        action: () => styleStore.toggleDark(),
+        icon: SunIcon,
+        category: 'Actions',
+        keywords: ['dark', 'theme', 'toggle', 'mode', 'light', '深色', '浅色', '主题'],
+      },
+      {
+        name: 'Github repository',
+        href: 'https://github.com/chenruiyi/it-tools',
+        category: 'External',
+        description: 'View the source code of it-tools on Github.',
+        keywords: ['github', 'repo', 'repository', 'source', 'code', '仓库', '源码'],
+        icon: GithubIcon,
+      },
+      {
+        name: 'Report a bug or an issue',
+        description: 'Report a bug or an issue to help improve it-tools.',
+        href: 'https://github.com/chenruiyi/it-tools/issues/new/choose',
+        category: 'Actions',
+        keywords: ['report', 'issue', 'bug', 'problem', 'error', '报告', '问题', '反馈'],
+        icon: BugIcon,
+      },
+      {
+        name: 'About',
+        description: 'Learn more about IT-Tools.',
+        to: '/about',
+        category: 'Pages',
+        keywords: ['about', 'learn', 'more', 'info', 'information', '关于'],
+        icon: InfoIcon,
+      },
+    ];
+  });
 
   const { searchResult } = useFuzzySearch({
     search: searchPrompt,

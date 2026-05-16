@@ -138,7 +138,7 @@ function toggleCategoryCollapse({ name }: { name: string }) {
   border-radius: 8px;
   text-decoration: none;
   color: var(--text-color, #1e293b);
-  font-size: 13px;
+  font-size: 14px;
   transition: all 0.15s ease;
   white-space: nowrap;
   overflow: hidden;
