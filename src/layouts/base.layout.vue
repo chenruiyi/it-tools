@@ -7,13 +7,11 @@ import HeroGradient from '../assets/hero-gradient.svg?component';
 import MenuLayout from '../components/MenuLayout.vue';
 import NavbarButtons from '../components/NavbarButtons.vue';
 import { useStyleStore } from '@/stores/style.store';
-import { config } from '@/config';
 import type { ToolCategory } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
 import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
 
 const styleStore = useStyleStore();
-const version = config.app.version;
 
 const { t } = useI18n();
 
@@ -54,12 +52,7 @@ const tools = computed<ToolCategory[]>(() => [
         <CollapsibleToolMenu :tools-by-category="tools" />
 
         <div class="footer">
-          <div>
-            IT-Tools
-            <c-link target="_blank" rel="noopener" :href="`https://github.com/chenruiyi/it-tools/tree/v${version}`">
-              v{{ version }}
-            </c-link>
-          </div>
+          <div>© {{ new Date().getFullYear() }} IT-Tools</div>
         </div>
       </div>
     </template>
