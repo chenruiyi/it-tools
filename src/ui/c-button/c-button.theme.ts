@@ -35,11 +35,11 @@ function createTheme({ style }: { style: 'light' | 'dark' }) {
         fontSize: '12px',
       },
       medium: {
-        width: '36px',
+        width: '38px',
         fontSize: '14px',
       },
       large: {
-        width: '42px',
+        width: '44px',
         fontSize: '15px',
       },
     },

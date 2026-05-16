@@ -76,9 +76,9 @@ const size = computed(() => theme.value.size[sizeName.value]);
   height: v-bind('size.width');
   font-weight: 500;
   color: v-bind('variantTheme.textColor');
-  padding: 0 16px;
+  padding: 0 20px;
   border-radius: 8px;
-  transition: all 0.15s ease;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
   background-color: v-bind('variantTheme.backgroundColor');
   display: inline-flex;
@@ -105,7 +105,7 @@ const size = computed(() => theme.value.size[sizeName.value]);
 
     &:active {
       background-color: v-bind('variantTheme.pressed.backgroundColor');
-      transform: translateY(0);
+      transform: translateY(0) scale(0.97);
     }
   }
 

@@ -23,7 +23,7 @@ withDefaults(defineProps<{
 .n-divider--horizontal {
   display: flex;
   align-items: center;
-  margin: 16px 0;
+  margin: 24px 0;
 }
 
 .n-divider__line {
@@ -45,15 +45,17 @@ withDefaults(defineProps<{
 }
 
 .n-divider__title {
-  padding: 0 12px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #334155;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 :global(html.dark) .n-divider__title {
-  color: #cbd5e1;
+  color: #94a3b8;
 }
 
 .n-divider--vertical {

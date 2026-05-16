@@ -62,7 +62,7 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
 
   ::v-deep(& > *) {
     flex: 0 1 900px;

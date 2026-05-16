@@ -52,7 +52,7 @@ function onInput(event: Event) {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 4px 0;
+  padding: 8px 0;
 }
 
 .n-slider--disabled {
@@ -75,6 +75,7 @@ function onInput(event: Event) {
   );
   outline: none;
   cursor: pointer;
+  transition: height 0.15s;
 }
 
 .n-slider--disabled .n-slider__input {
@@ -84,54 +85,51 @@ function onInput(event: Event) {
 .n-slider__input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #6366f1;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
   cursor: pointer;
-  transition: transform 0.15s;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
 }
 
 .n-slider__input::-webkit-slider-thumb:hover {
   transform: scale(1.15);
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+}
+
+.n-slider__input:active::-webkit-slider-thumb {
+  transform: scale(1.05);
 }
 
 .n-slider__input::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #6366f1;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
   cursor: pointer;
 }
 
 .n-slider__input:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
 }
 
-:root.dark .n-slider__input,
-.dark .n-slider__input {
+:global(html.dark) .n-slider__input {
   background: linear-gradient(
     to right,
-    #6366f1 0%,
-    #6366f1 var(--fill, 0%),
+    #818cf8 0%,
+    #818cf8 var(--fill, 0%),
     #334155 var(--fill, 0%),
     #334155 100%
   );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) .n-slider__input {
-    background: linear-gradient(
-      to right,
-      #6366f1 0%,
-      #6366f1 var(--fill, 0%),
-      #334155 var(--fill, 0%),
-      #334155 100%
-    );
-  }
+:global(html.dark) .n-slider__input::-webkit-slider-thumb {
+  border-color: #818cf8;
+  box-shadow: 0 2px 6px rgba(129, 140, 248, 0.25);
 }
 </style>
