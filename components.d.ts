@@ -95,6 +95,7 @@ declare module '@vue/runtime-core' {
     IconMdiArrowDown: typeof import('~icons/mdi/arrow-down')['default']
     IconMdiArrowRightBottom: typeof import('~icons/mdi/arrow-right-bottom')['default']
     IconMdiCamera: typeof import('~icons/mdi/camera')['default']
+    IconMdiCheck: typeof import('~icons/mdi/check')['default']
     IconMdiChevronDown: typeof import('~icons/mdi/chevron-down')['default']
     IconMdiChevronRight: typeof import('~icons/mdi/chevron-right')['default']
     IconMdiClose: typeof import('~icons/mdi/close')['default']
