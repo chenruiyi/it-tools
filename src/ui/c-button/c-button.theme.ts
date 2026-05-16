@@ -31,16 +31,16 @@ function createTheme({ style }: { style: 'light' | 'dark' }) {
   return {
     size: {
       small: {
-        width: '28px',
+        width: '30px',
         fontSize: '12px',
       },
       medium: {
-        width: '34px',
+        width: '36px',
         fontSize: '14px',
       },
       large: {
-        width: '40px',
-        fontSize: '16px',
+        width: '42px',
+        fontSize: '15px',
       },
     },
 
@@ -52,22 +52,22 @@ function createTheme({ style }: { style: 'light' | 'dark' }) {
         pressedBackground: theme.default.colorPressed,
       }),
       primary: createState({
-        textColor: theme.primary.color,
-        backgroundColor: theme.primary.colorFaded,
-        hoverBackground: lighten(theme.primary.colorFaded, 30),
-        pressedBackground: darken(theme.primary.colorFaded, 30),
+        textColor: '#ffffff',
+        backgroundColor: theme.primary.color,
+        hoverBackground: theme.primary.colorHover,
+        pressedBackground: theme.primary.colorPressed,
       }),
       warning: createState({
-        textColor: theme.warning.color,
-        backgroundColor: theme.warning.colorFaded,
-        hoverBackground: lighten(theme.warning.colorFaded, 30),
-        pressedBackground: darken(theme.warning.colorFaded, 30),
+        textColor: '#ffffff',
+        backgroundColor: theme.warning.color,
+        hoverBackground: theme.warning.colorHover,
+        pressedBackground: theme.warning.colorPressed,
       }),
       error: createState({
-        textColor: theme.error.color,
-        backgroundColor: theme.error.colorFaded,
-        hoverBackground: lighten(theme.error.colorFaded, 30),
-        pressedBackground: darken(theme.error.colorFaded, 30),
+        textColor: '#ffffff',
+        backgroundColor: theme.error.color,
+        hoverBackground: theme.error.colorHover,
+        pressedBackground: theme.error.colorPressed,
       }),
     },
     text: {
@@ -84,13 +84,13 @@ function createTheme({ style }: { style: 'light' | 'dark' }) {
         pressedBackground: darken(theme.primary.colorFaded, 30),
       }),
       warning: createState({
-        textColor: darken(theme.warning.color, 20),
+        textColor: theme.warning.color,
         backgroundColor: 'transparent',
         hoverBackground: theme.warning.colorFaded,
         pressedBackground: darken(theme.warning.colorFaded, 30),
       }),
       error: createState({
-        textColor: darken(theme.error.color, 20),
+        textColor: theme.error.color,
         backgroundColor: 'transparent',
         hoverBackground: theme.error.colorFaded,
         pressedBackground: darken(theme.error.colorFaded, 30),

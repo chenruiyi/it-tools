@@ -74,11 +74,11 @@ const size = computed(() => theme.value.size[sizeName.value]);
   cursor: pointer;
   text-decoration: none;
   height: v-bind('size.width');
-  font-weight: 400;
+  font-weight: 500;
   color: v-bind('variantTheme.textColor');
-  padding: 0 14px;
-  border-radius: 4px;
-  transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  padding: 0 16px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
 
   background-color: v-bind('variantTheme.backgroundColor');
   display: inline-flex;
@@ -87,7 +87,6 @@ const size = computed(() => theme.value.size[sizeName.value]);
   justify-content: center;
   flex-shrink: 0;
 
-  // outline-offset: 1px;
   &.round {
     border-radius: 100px;
   }
@@ -101,15 +100,18 @@ const size = computed(() => theme.value.size[sizeName.value]);
   &:not(.disabled) {
     &:hover {
       background-color: v-bind('variantTheme.hover.backgroundColor');
+      transform: translateY(-1px);
     }
 
     &:active {
       background-color: v-bind('variantTheme.pressed.backgroundColor');
+      transform: translateY(0);
     }
   }
 
-  &:focus {
-    outline: 1px solid v-bind('appTheme.primary.color');
+  &:focus-visible {
+    outline: 2px solid v-bind('appTheme.primary.color');
+    outline-offset: 2px;
   }
 
   &.disabled {

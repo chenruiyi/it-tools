@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-restricted-imports
 import { useClipboard } from '@vueuse/core';
-import { useMessage } from 'naive-ui';
+import { useMessage } from '@/composable/toast';
 import type { MaybeRefOrGetter } from 'vue';
 
 export function useCopy({ source, text = 'Copied to the clipboard', createToast = true }: { source?: MaybeRefOrGetter<string>; text?: string; createToast?: boolean } = {}) {

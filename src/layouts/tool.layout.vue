@@ -34,21 +34,18 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
   <BaseLayout>
     <div class="tool-layout">
       <div class="tool-header">
-        <div flex flex-nowrap items-center justify-between>
-          <n-h1>
+        <div class="tool-title-row">
+          <h1 class="tool-title">
             {{ toolTitle }}
-          </n-h1>
-
-          <div>
-            <FavoriteButton :tool="{ name: route.meta.name, path: route.path } as Tool" />
-          </div>
+          </h1>
+          <FavoriteButton :tool="{ name: route.meta.name, path: route.path } as Tool" />
         </div>
 
         <div class="separator" />
 
-        <div class="description">
+        <p class="description">
           {{ toolDescription }}
-        </div>
+        </p>
       </div>
     </div>
 
@@ -78,30 +75,38 @@ const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.descrip
   box-sizing: border-box;
 
   .tool-header {
-    padding: 40px 0;
+    padding: 24px 0 32px;
     width: 100%;
 
-    .n-h1 {
-      opacity: 0.9;
-      font-size: 40px;
-      font-weight: 400;
+    .tool-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .tool-title {
+      font-size: 28px;
+      font-weight: 700;
       margin: 0;
-      line-height: 1;
+      line-height: 1.2;
+      color: var(--text-color, #1e293b);
+      letter-spacing: -0.02em;
     }
 
     .separator {
-      width: 200px;
-      height: 2px;
-      background: rgb(161, 161, 161);
-      opacity: 0.2;
-
-      margin: 10px 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color, #6366f1), transparent);
+      border-radius: 4px;
+      margin: 12px 0;
     }
 
     .description {
       margin: 0;
-
-      opacity: 0.7;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted, #64748b);
     }
   }
 }

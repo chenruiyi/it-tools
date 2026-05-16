@@ -1,6 +1,15 @@
-import type { SelectGroupOption, SelectOption } from 'naive-ui';
-
 export type { OGSchemaType, OGSchemaTypeElementInput, OGSchemaTypeElementSelect, OGSchemaTypeElementInputMultiple };
+
+interface SelectOption {
+  label: string
+  value: string | number
+}
+
+interface SelectGroupOption {
+  type: 'group'
+  label: string
+  children: SelectOption[]
+}
 
 interface OGSchemaTypeElementBase {
   key: string

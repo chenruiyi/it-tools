@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import { NIcon, useThemeVars } from 'naive-ui';
-
 import { RouterLink } from 'vue-router';
-import { Heart, Home2, Menu2 } from '@vicons/tabler';
+import { IconHome, IconMenu2 } from '@tabler/icons-vue';
 
 import { storeToRefs } from 'pinia';
 import HeroGradient from '../assets/hero-gradient.svg?component';
@@ -12,15 +10,11 @@ import { useStyleStore } from '@/stores/style.store';
 import { config } from '@/config';
 import type { ToolCategory } from '@/tools/tools.types';
 import { useToolStore } from '@/tools/tools.store';
-import { useTracker } from '@/modules/tracker/tracker.services';
 import CollapsibleToolMenu from '@/components/CollapsibleToolMenu.vue';
 
-const themeVars = useThemeVars();
 const styleStore = useStyleStore();
 const version = config.app.version;
-const commitSha = config.app.lastCommitSha.slice(0, 7);
 
-const { tracker } = useTracker();
 const { t } = useI18n();
 
 const toolStore = useToolStore();
@@ -62,27 +56,8 @@ const tools = computed<ToolCategory[]>(() => [
         <div class="footer">
           <div>
             IT-Tools
-
-            <c-link target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
+            <c-link target="_blank" rel="noopener" :href="`https://github.com/chenruiyi/it-tools/tree/v${version}`">
               v{{ version }}
-            </c-link>
-
-            <template v-if="commitSha && commitSha.length > 0">
-              -
-              <c-link
-                target="_blank"
-                rel="noopener"
-                type="primary"
-                :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"
-              >
-                {{ commitSha }}
-              </c-link>
-            </template>
-          </div>
-          <div>
-            © {{ new Date().getFullYear() }}
-            <c-link target="_blank" rel="noopener" href="https://corentin.tech?utm_source=it-tools&utm_medium=footer">
-              Corentin Thomasset
             </c-link>
           </div>
         </div>
@@ -90,50 +65,32 @@ const tools = computed<ToolCategory[]>(() => [
     </template>
 
     <template #content>
-      <div flex items-center justify-center gap-2>
-        <c-button
-          circle
-          variant="text"
-          :aria-label="$t('home.toggleMenu')"
-          @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
-        >
-          <NIcon size="25" :component="Menu2" />
-        </c-button>
-
-        <c-tooltip :tooltip="$t('home.home')" position="bottom">
-          <c-button to="/" circle variant="text" :aria-label="$t('home.home')">
-            <NIcon size="25" :component="Home2" />
+      <div class="navbar">
+        <div class="navbar-left">
+          <c-button
+            circle
+            variant="text"
+            :aria-label="$t('home.toggleMenu')"
+            @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed"
+          >
+            <IconMenu2 :size="22" />
           </c-button>
-        </c-tooltip>
 
-        <c-tooltip :tooltip="$t('home.uiLib')" position="bottom">
+          <c-button to="/" circle variant="text" :aria-label="$t('home.home')">
+            <IconHome :size="22" />
+          </c-button>
+
           <c-button v-if="config.app.env === 'development'" to="/c-lib" circle variant="text" :aria-label="$t('home.uiLib')">
             <icon-mdi:brush-variant text-20px />
           </c-button>
-        </c-tooltip>
 
-        <command-palette />
-
-        <locale-selector v-if="!styleStore.isSmallScreen" />
-
-        <div>
-          <NavbarButtons v-if="!styleStore.isSmallScreen" />
+          <command-palette />
         </div>
 
-        <c-tooltip position="bottom" :tooltip="$t('home.support')">
-          <c-button
-            round
-            href="https://www.buymeacoffee.com/cthmsst"
-            rel="noopener"
-            target="_blank"
-            class="support-button"
-            :bordered="false"
-            @click="() => tracker.trackEvent({ eventName: 'Support button clicked' })"
-          >
-            {{ $t('home.buyMeACoffee') }}
-            <NIcon v-if="!styleStore.isSmallScreen" :component="Heart" ml-2 />
-          </c-button>
-        </c-tooltip>
+        <div class="navbar-right">
+          <locale-selector v-if="!styleStore.isSmallScreen" />
+          <NavbarButtons v-if="!styleStore.isSmallScreen" />
+        </div>
       </div>
       <slot />
     </template>
@@ -141,35 +98,27 @@ const tools = computed<ToolCategory[]>(() => [
 </template>
 
 <style lang="less" scoped>
-// ::v-deep(.n-layout-scroll-container) {
-//     @percent: 4%;
-//     @position: 25px;
-//     @size: 50px;
-//     @color: #eeeeee25;
-//     background-image: radial-gradient(@color @percent, transparent @percent),
-//         radial-gradient(@color @percent, transparent @percent);
-//     background-position: 0 0, @position @position;
-//     background-size: @size @size;
-// }
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
 
-.support-button {
-  background: rgb(37, 99, 108);
-  background: linear-gradient(48deg, rgba(37, 99, 108, 1) 0%, rgba(59, 149, 111, 1) 60%, rgba(20, 160, 88, 1) 100%);
-  color: #fff !important;
-  transition: padding ease 0.2s !important;
-
-  &:hover {
-    color: #fff;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .footer {
   text-align: center;
-  color: #838587;
+  color: #94a3b8;
   margin-top: 20px;
   padding: 20px 0;
+  font-size: 13px;
 }
 
 .sider-content {
@@ -199,19 +148,21 @@ const tools = computed<ToolCategory[]>(() => [
 
     .title {
       font-size: 25px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     .divider {
-      width: 50px;
+      width: 40px;
       height: 2px;
       border-radius: 4px;
-      background-color: v-bind('themeVars.primaryColor');
-      margin: 0 auto 5px;
+      background: linear-gradient(90deg, #6366f1, #a78bfa);
+      margin: 6px auto;
     }
 
     .subtitle {
-      font-size: 16px;
+      font-size: 14px;
+      opacity: 0.9;
     }
   }
 }

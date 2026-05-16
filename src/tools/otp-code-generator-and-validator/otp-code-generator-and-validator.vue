@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useTimestamp } from '@vueuse/core';
-import { useThemeVars } from 'naive-ui';
+import { useThemeVars } from '@/composable/theme';
 import { useQRCode } from '../qr-code-generator/useQRCode';
 import { base32toHex, buildKeyUri, generateSecret, generateTOTP, getCounterFromTime } from './otp.service';
 import TokenDisplay from './token-display.vue';

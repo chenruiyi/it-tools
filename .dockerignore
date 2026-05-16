@@ -1,5 +1,43 @@
+# Dependencies (will be installed in container)
 node_modules
-playwright-report
-coverage
+
+# Build output (will be built in container)
 dist
+dist-ssr
+
+# Git
+.git
+.gitignore
+
+# CI/CD & GitHub
+.github
+
+# Test & coverage
+coverage
 test-results
+playwright-report
+playwright/.cache
+.playwright-mcp
+
+# Editor & IDE
+.vscode
+.idea
+
+# Documentation & meta
+README.md
+LICENSE
+CLAUDE.md
+.claude
+
+# Docker (avoid recursive copy)
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Env & secrets
+.env
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db

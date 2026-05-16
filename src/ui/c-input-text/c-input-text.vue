@@ -239,10 +239,13 @@ defineExpose({
   }
 
   & > .label {
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     flex: 0 0 v-bind('labelWidth');
     text-align: v-bind('labelAlign');
     padding-right: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: v-bind('appTheme.text.mutedColor');
   }
 
   .feedback-wrapper {
@@ -256,9 +259,9 @@ defineExpose({
     background-color: v-bind('theme.backgroundColor');
     color: transparent;
     border: 1px solid v-bind('theme.borderColor');
-    border-radius: 4px;
-    padding: 0 4px 0 12px;
-    transition: border-color 0.2s ease-in-out;
+    border-radius: 8px;
+    padding: 0 6px 0 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 
     .multiline& {
       resize: vertical;
@@ -285,6 +288,7 @@ defineExpose({
     & > .input {
       flex: 1 1 0;
       min-width: 0;
+      min-height: 36px;
 
       padding: 8px 0;
       outline: none;
@@ -295,6 +299,7 @@ defineExpose({
       box-shadow: none;
       border: none;
       color: v-bind('appTheme.text.baseColor');
+      font-size: 14px;
 
       &::placeholder {
         color: v-bind('appTheme.text.mutedColor');
@@ -307,7 +312,7 @@ defineExpose({
 
     &:focus-within {
       border-color: v-bind('appTheme.primary.color');
-
+      box-shadow: 0 0 0 3px v-bind('appTheme.primary.colorFaded');
       background-color: v-bind('theme.focus.backgroundColor');
     }
   }
@@ -321,7 +326,8 @@ defineExpose({
     }
 
     &:focus-within {
-      background-color: v-bind('appTheme.error.color + 22');
+      box-shadow: 0 0 0 3px v-bind('appTheme.error.colorFaded');
+      background-color: v-bind('appTheme.error.colorFaded');
     }
   }
 
@@ -337,5 +343,11 @@ defineExpose({
       cursor: not-allowed;
     }
   }
+}
+
+.feedback {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useThemeVars } from 'naive-ui';
+import { useThemeVars } from '@/composable/theme';
 import type { Tool } from '@/tools/tools.types';
 
 const props = defineProps<{ tool: Tool }>();

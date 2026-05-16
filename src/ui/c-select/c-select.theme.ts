@@ -3,16 +3,16 @@ import { appThemes } from '../theme/themes';
 
 const sizes = {
   small: {
-    height: '28px',
+    height: '30px',
     fontSize: '12px',
   },
   medium: {
-    height: '34px',
+    height: '36px',
     fontSize: '14px',
   },
   large: {
-    height: '40px',
-    fontSize: '16px',
+    height: '42px',
+    fontSize: '15px',
   },
 };
 
@@ -20,13 +20,13 @@ export const { useTheme } = defineThemes({
   dark: {
     sizes,
 
-    backgroundColor: '#333333',
-    borderColor: '#333333',
-    dropdownShadow: 'rgba(0, 0, 0, 0.2) 0px 8px 24px',
+    backgroundColor: '#0f172a',
+    borderColor: '#334155',
+    dropdownShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
 
     option: {
       hover: {
-        backgroundColor: '#444444',
+        backgroundColor: '#334155',
       },
       active: {
         textColor: appThemes.dark.primary.color,
@@ -34,19 +34,19 @@ export const { useTheme } = defineThemes({
     },
 
     focus: {
-      backgroundColor: '#1ea54c1a',
+      backgroundColor: '#1e293b',
     },
   },
   light: {
     sizes,
 
-    backgroundColor: '#ffffff',
-    borderColor: '#e0e0e69e',
-    dropdownShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
+    backgroundColor: '#f8fafc',
+    borderColor: '#e2e8f0',
+    dropdownShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
 
     option: {
       hover: {
-        backgroundColor: '#eee',
+        backgroundColor: '#f1f5f9',
       },
       active: {
         textColor: appThemes.light.primary.color,

@@ -206,12 +206,12 @@ function onSearchInput() {
   .c-select-input {
     background-color: v-bind('theme.backgroundColor');
     border: 1px solid v-bind('theme.borderColor');
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 0 12px;
     font-family: inherit;
     font-size: v-bind('size.fontSize');
     height: v-bind('size.height');
-    transition: border-color 0.2s ease-in-out;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
     .placeholder, .chevron {
       color: v-bind('appTheme.text.mutedColor');
@@ -220,16 +220,16 @@ function onSearchInput() {
 
   .c-select-dropdown {
     background-color: v-bind('theme.backgroundColor');
-    border-radius: 4px;
-    // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 10px;
     box-shadow: v-bind('theme.dropdownShadow');
+    border: 1px solid v-bind('theme.borderColor');
     font-family: inherit;
     font-size: inherit;
     line-height: 1;
     padding: 6px;
 
     .c-select-dropdown-option{
-      border-radius: 4px;
+      border-radius: 6px;
       padding: 8px 12px;
       background-color: transparent;
       transition: background-color 0.2s ease-in-out;

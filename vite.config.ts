@@ -8,7 +8,6 @@ import Unocss from 'unocss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
@@ -17,6 +16,17 @@ import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
 
 const baseUrl = process.env.BASE_URL ?? '/';
+
+function NCompatResolver() {
+  return {
+    type: 'component' as const,
+    resolve: (name: string) => {
+      if (name.match(/^N[A-Z]/)) {
+        return { name: 'default', from: `@/ui/n/${name}.vue` };
+      }
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -37,9 +47,6 @@ export default defineConfig({
         'vue-router',
         '@vueuse/core',
         'vue-i18n',
-        {
-          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
-        },
       ],
       vueTemplate: true,
       eslintrc: {
@@ -63,8 +70,8 @@ export default defineConfig({
         lang: 'fr-FR',
         start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
-        theme_color: '#18a058',
-        background_color: '#f1f5f9',
+        theme_color: '#6366f1',
+        background_color: '#f8fafc',
         icons: [
           {
             src: '/favicon-16x16.png',
@@ -94,7 +101,7 @@ export default defineConfig({
       dirs: ['src/'],
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      resolvers: [NaiveUiResolver(), IconsResolver({ prefix: 'icon' })],
+      resolvers: [NCompatResolver(), IconsResolver({ prefix: 'icon' })],
     }),
     Unocss(),
   ],

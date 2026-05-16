@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Plus, Trash } from '@vicons/tabler';
 import { useTemplateRefsList, useVModel } from '@vueuse/core';
-import { NInputNumber } from 'naive-ui';
 import { nextTick } from 'vue';
 
 const props = defineProps<{ values: (number | null)[] }>();

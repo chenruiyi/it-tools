@@ -2,7 +2,7 @@
 import { tryOnBeforeUnmount, useVModel } from '@vueuse/core';
 import { Editor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
-import { useThemeVars } from 'naive-ui';
+import { useThemeVars } from '@/composable/theme';
 import MenuBar from './menu-bar.vue';
 
 const props = defineProps<{ html: string }>();

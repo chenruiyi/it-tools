@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useThemeVars } from 'naive-ui';
+import { useThemeVars } from '@/composable/theme';
 import Memo from './regex-memo.content.md';
 
 const themeVars = useThemeVars();
