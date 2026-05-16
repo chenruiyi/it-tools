@@ -1,6 +1,12 @@
-# IT Tools
+<picture>
+    <source srcset="./.github/logo-dark.png" media="(prefers-color-scheme: light)">
+    <source srcset="./.github/logo-white.png" media="(prefers-color-scheme: dark)">
+    <img src="./.github/logo-dark.png" alt="IT Tools">
+</picture>
 
+<p align="center">
 Collection of handy online tools for developers, with great UX.
+</p>
 
 ## Self Host
 

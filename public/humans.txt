@@ -1,4 +1,7 @@
 /* TEAM */
-Developer: Corentin Thomasset
-Site: https://github.com/CorentinTh
-Twitter: @cthmsst
+Maintainer: chenruiyi
+Site: https://github.com/chenruiyi
+
+/* THANKS */
+Original Author: Corentin Thomasset
+Site: https://github.com/CorentinTh/it-tools
